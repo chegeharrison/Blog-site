@@ -29,6 +29,9 @@ class CreatePostView(LoginRequiredMixin,CreateView):
 
     form_class= PostForm
     model=Post
+    print('=======Model: ', model)
+    for m in Post.objects.all():
+         print('============Author: ', m.author)
     template_name = 'blog/post_detail.html'
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -46,14 +49,15 @@ class DraftListView(LoginRequiredMixin,ListView):
     redirect_field_name ='blog/post_list.html'
     model = Post
 
-    def get_queryset(self):
+def get_queryset(self):
         return Post.objects.filter()
-#######################################
+
 ## Functions that require a pk match ##
-#######################################
+
 @login_required
 def add_comment_to_post(request, pk): 
         post =get_object_or_404(Post, pk=pk)
+        
         if request.method == 'POST':
             form = CommentForm(request.POST)
             if form.is_valid():
@@ -82,7 +86,8 @@ def comment_remove(request, pk):
 
 @login_required   
 def post_publish(request, pk):
+        print(f"pk: {pk}") 
         post = get_object_or_404(Post, pk=pk)
         post.publish()
-        return redirect('post_detail', pk=pk)
+        return redirect('post_detail', args=[str(post.pk)])
           

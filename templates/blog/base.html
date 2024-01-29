@@ -23,7 +23,7 @@
 
 
     <!-- custom css -->
-    <link rel="stylesheet" href="{% static 'css/blog.csss' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
         <div class="container">
             <ul class="nav navbar-nav">
                 <li><a class="narbar-brand bigbrand" href="{% url 'post_list' %}">My blog</a></li>
-                <li><a href="{%url 'about' %}">About</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
                  <li><a href="https://www.github.com">Github</a></li>
                 <li><a href="https://www.linkedin.com">LinkedIn</a></li>
 

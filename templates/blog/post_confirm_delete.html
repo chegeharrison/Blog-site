@@ -2,7 +2,7 @@
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-    <p>Are sure you want to delete{{object}}?</p>
+    <p>Are sure you want to delete"{{object}}"?</p>
     <input type="submit" class="btn btn-danger" value="Confirm">
 </form>
 

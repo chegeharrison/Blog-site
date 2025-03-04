@@ -27,8 +27,3 @@ urlpatterns = [
     path("accounts/logout/", LogoutView.as_view(), name='logout', kwargs={'next_page':''}),
 
 ]
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-    path("a___debug__/", include(debug_toolbar.urls),)
-    ] + urlpatterns
